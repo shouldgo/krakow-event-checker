@@ -11,6 +11,7 @@ require 'json'
 require 'digest'
 require 'fileutils'
 require 'set'
+require 'openssl'
 
 # Check if nokogiri is available, install if needed
 begin
@@ -884,6 +885,12 @@ class EventChecker
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = uri.scheme == 'https'
     http.read_timeout = HTTP_TIMEOUT_SECONDS
+    
+    # Configure SSL to handle certificate issues
+    if http.use_ssl?
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+      http.ssl_version = :TLSv1_2
+    end
     
     request = Net::HTTP::Get.new(uri)
     request['User-Agent'] = USER_AGENT
