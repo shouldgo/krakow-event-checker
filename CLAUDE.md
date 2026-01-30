@@ -10,7 +10,7 @@ Automated Ruby script that scrapes cultural events from two Kraków websites, el
 2. **krakow.pl** (https://www.krakow.pl/kalendarium/) - Secondary source for cross-reference
 
 ### File Structure
-- **ongoing.md** - Events >30 days, organized by event type
+- **ongoing.md** - Events >30 days; "New Events" section at top + organized by type
 - **upcoming.md** - Events 1-30 days (multi-day) + daily events  
 - **archive.md** - Past events, automatically managed
 - **event_checker.rb** - Main script (1356 lines)
@@ -81,6 +81,11 @@ Automated Ruby script that scrapes cultural events from two Kraków websites, el
 5. Reports new events found and counts
 
 ## Recent Major Updates
+
+### New Events Highlighting (January 2026)
+- "## New Events" section at top of ongoing.md when new events detected
+- New events also appear in their regular type sections below
+- Section automatically hidden when no new events
 
 ### Phase 1 Refactoring (August 20, 2025)
 - Code organization and quality improvements
